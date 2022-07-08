@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 
 import com.qinyue.vcommon.base.BaseActivity;
 import com.qinyue.vcommon.listener.OnMultiClickListener;
+import com.qinyue.vcommon.manager.MySkinManager;
 import com.qinyue.vcommon.utils.ToastUtils;
 import com.qinyue.vmine.databinding.ActivityMainBinding;
 import com.qinyue.vmine.event.MainEvent;
@@ -38,6 +39,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 mainMessager.input(new MainEvent(MainEvent.CHAGESKIN));
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MySkinManager.getInstance().chageForSystemNight();
     }
 
     @Override

@@ -10,9 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_bg_color"
+        android:background="#FFEB3B"
         tools:context=".MainActivity">
-
         <TextView
             android:padding="@dimen/dp_10"
             android:id="@+id/title_tv"

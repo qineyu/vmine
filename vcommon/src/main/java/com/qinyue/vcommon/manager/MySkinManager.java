@@ -1,9 +1,12 @@
 package com.qinyue.vcommon.manager;
 
+import android.app.UiModeManager;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.qinyue.vcommon.constants.SkinType;
 import com.qinyue.vcommon.utils.SettingSPUtils;
+import com.qinyue.vcommon.utils.XUtil;
 
 import skin.support.SkinCompatManager;
 import skin.support.utils.SkinPreference;
@@ -77,5 +80,20 @@ public class MySkinManager {
      */
     public void chageNight(){
         chageSkin(SkinType.NIGHT.getValue(),null);
+    }
+
+    /**
+     * 判断当前系统是不是深色模式
+     * @return
+     */
+    public void chageForSystemNight(){
+        UiModeManager uiModeManager = (UiModeManager)XUtil.getContext().getSystemService(Context.UI_MODE_SERVICE);
+        if (uiModeManager!=null){
+            if (uiModeManager.getNightMode()==UiModeManager.MODE_NIGHT_YES){
+                chageNight();
+            }else {
+                chageNomral();
+            }
+        }
     }
 }

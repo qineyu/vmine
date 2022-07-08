@@ -18,8 +18,11 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModel;
 
 import com.kunminx.architecture.ui.scope.ViewModelScope;
+import com.qinyue.vcommon.constants.SkinType;
+import com.qinyue.vcommon.logger.Logger;
 import com.qinyue.vcommon.manager.MySkinManager;
 import com.qinyue.vcommon.utils.ACache;
+import com.qinyue.vcommon.utils.StatusBarUtils;
 
 import skin.support.SkinCompatManager;
 import skin.support.app.SkinCompatDelegate;
@@ -39,13 +42,17 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected T dataBind;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        //会收起状态栏
+//        StatusBarUtils.fullScreen(this);
         super.onCreate(savedInstanceState);
         dataBind = DataBindingUtil.setContentView(this,getLayoutId());
+        SkinCompatManager.getInstance().addObserver(this);
         onInitViewModel();
         onInitView();
         onInitData();
         onOutput();
         onInput();
+        updateSkin(null,null);
     }
 
     /**
@@ -56,7 +63,6 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     @Override
     protected void onResume() {
         super.onResume();
-        SkinCompatManager.getInstance().addObserver(this);
     }
 
     @Override
@@ -95,6 +101,11 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
     @Override
     public void updateSkin(SkinObservable observable, Object o) {
+        if ( MySkinManager.getInstance().getSkinName().equals(SkinType.NORMAL.getValue())){
+            StatusBarUtils.setStatusBarLightMode(this);
+        }else {
+            StatusBarUtils.setStatusBarDarkMode(this);
+        }
     }
 
     /**
@@ -103,7 +114,6 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
      */
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
         int systemTheme = newConfig.uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (systemTheme) {
             case Configuration.UI_MODE_NIGHT_NO: {//非深色模式
@@ -115,5 +125,6 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
             }
             break;
         }
+        super.onConfigurationChanged(newConfig);
     }
 }
