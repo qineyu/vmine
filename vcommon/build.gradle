@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk rootProject.ext.versions.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.versions.minSdkVersion
+        targetSdk rootProject.ext.versions.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        //Arouter路由配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            buildConfigField("boolean", "IS_DEBUG", "false")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("boolean", "IS_DEBUG", "true")
+            minifyEnabled false
+        }
+    }
+    //
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res-night']
+        }
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+dependencies {
+    //把implementation 用api代替,它是对外部公开的, 所有其他的module就不需要添加该依赖
+//    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["constraintlayout"]
+    api rootProject.ext.dependencies["junit"]
+    api rootProject.ext.dependencies["runner"]
+    api rootProject.ext.dependencies["espresso_core"]
+    api rootProject.ext.dependencies["design"]
+
+    //Arouter路由
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+    api rootProject.ext.dependencies["arouter_api"]
+    //分包
+    api rootProject.ext.dependencies["multidex"]
+    //gson
+    api rootProject.ext.dependencies["gson"]
+    //权限获取
+    api rootProject.ext.dependencies["rxpermissions"]
+    //屏幕适配
+    api rootProject.ext.dependencies["autosize"]
+    //换肤
+    api rootProject.ext.dependencies["skin"]
+//    api rootProject.ext.dependencies["skin_appcompat"]
+    api(rootProject.ext.dependencies["skin_appcompat"]){
+        exclude group: 'androidx.appcompat'
+    }
+    api rootProject.ext.dependencies["skin_design"]
+    api rootProject.ext.dependencies["skin_constraint_layout"]
+    //mvi框架
+//    api rootProject.ext.dependencies["mvi"]
+    api(rootProject.ext.dependencies["mvi"]){
+        exclude group: 'androidx.appcompat'
+    }
+}

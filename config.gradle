@@ -1,0 +1,92 @@
+/**
+ * 全局统一配置
+ */
+ext {
+    /**
+     * module开关统一声明在此处
+     * true：module作为application，可单独打包为apk
+     * false：module作为library，可作为宿主application的组件
+     */
+    isMainApp    = true
+    isMineApp    = false
+
+    /**
+     * 版本统一管理main
+     */
+    versions = [
+            applicationId           : "com.qinyue.vmine",        //应用ID
+            versionCode             : 1,                    //版本号
+            versionName             : "1.0.0",              //版本名称
+
+            compileSdkVersion       : 32,
+            minSdkVersion           : 23,
+            targetSdkVersion        : 32,
+
+            constraintlayoutVersion : "2.0.4",
+            runnerVersion           : "1.1.3",
+            espressoVersion         : "3.4.0",
+            junitVersion            : "4.13.2",
+            annotationsVersion      : "28.0.0",
+            appcompatVersion        : "1.1.0",
+            designVersion           : "1.4.0",
+
+            multidexVersion         : "2.0.0",
+
+            gsonVersion             : "2.8.9",
+
+            arouterApiVersion       : "1.5.2",
+            arouterCompilerVersion  : "1.5.2",
+//            arouterAnnotationVersion: "1.0.4",
+
+            permissions             : "0.12",
+
+            autosize                : "v1.2.1",
+
+            oaid                    : "1.0.4",
+
+            skin                    : "4.0.5",
+
+            mvi                     : "4.2.0-beta",
+
+    ]
+
+    dependencies = [
+            "appcompat"                     : "androidx.appcompat:appcompat:${versions["appcompatVersion"]}",
+            "constraintlayout"              : "androidx.constraintlayout:constraintlayout:${versions["constraintlayoutVersion"]}",
+            "runner"                        : "androidx.test.ext:junit:${versions["runnerVersion"]}",
+            "espresso_core"                 : "androidx.test.espresso:espresso-core:${versions["espressoVersion"]}",
+            "junit"                         : "junit:junit:${versions["junitVersion"]}",
+            "design"                        : "com.google.android.material:material:${versions["designVersion"]}",
+            //注释处理器
+//            "support_annotations": "androidx.annotation:annotation:1.0.0-beta01",
+
+
+            //方法数超过65535解决方法64K MultiDex分包方法
+            "multidex"                      : "androidx.multidex:multidex:${versions["multidexVersion"]}",
+
+            //阿里路由
+            "arouter_api"                   : "com.alibaba:arouter-api:${versions["arouterApiVersion"]}",
+            "arouter_compiler"              : "com.alibaba:arouter-compiler:${versions["arouterCompilerVersion"]}",
+//            "arouter_annotation" : "com.alibaba:arouter-annotation:${versions["arouterAnnotationVersion"]}",
+
+            //gson
+            "gson"                          : "com.google.code.gson:gson:${versions["gsonVersion"]}",
+
+            //permissions
+            "rxpermissions"                 : "com.github.tbruyelle:rxpermissions:${versions["permissions"]}",
+
+            //屏幕适配
+            "autosize"                      : "com.github.JessYanCoding:AndroidAutoSize:${versions["autosize"]}",
+
+            "oaid"                          : "com.github.flayone.OaidProject:myOaid:${versions["oaid"]}",
+
+            "skin"                          : "skin.support:skin-support:${versions["skin"]}",
+            "skin_appcompat"                : "skin.support:skin-support-appcompat:${versions["skin"]}",
+            "skin_design"                   : "skin.support:skin-support-design:${versions["skin"]}",
+            "skin_constraint_layout"        : "skin.support:skin-support-constraint-layout:${versions["skin"]}",
+
+            "mvi"                           : "com.kunminx.arch:mvi-dispatch:${versions["mvi"]}",
+
+    ]
+
+}
