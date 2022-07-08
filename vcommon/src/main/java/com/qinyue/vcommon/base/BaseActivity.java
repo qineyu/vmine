@@ -44,6 +44,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         //会收起状态栏
 //        StatusBarUtils.fullScreen(this);
+        setTheme(com.qinyue.vcommon.R.style.BaseAppTheme);
+        onCreateBefore();
         super.onCreate(savedInstanceState);
         dataBind = DataBindingUtil.setContentView(this,getLayoutId());
         SkinCompatManager.getInstance().addObserver(this);
@@ -83,6 +85,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected abstract void onInitView();
 
     protected void onInitData() {
+    }
+    protected void onCreateBefore() {
     }
 
     protected void onOutput() {

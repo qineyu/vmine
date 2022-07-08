@@ -19,3 +19,4 @@ dependencyResolutionManagement {
 rootProject.name = "vmine"
 include ':app'
 include ':vcommon'
+include ':vmain'

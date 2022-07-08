@@ -4,6 +4,7 @@ import android.view.View;
 
 import androidx.lifecycle.Observer;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.qinyue.vcommon.base.BaseActivity;
 import com.qinyue.vcommon.listener.OnMultiClickListener;
 import com.qinyue.vcommon.manager.MySkinManager;
@@ -11,7 +12,7 @@ import com.qinyue.vcommon.utils.ToastUtils;
 import com.qinyue.vmine.databinding.ActivityMainBinding;
 import com.qinyue.vmine.event.MainEvent;
 import com.qinyue.vmine.messager.MainMessager;
-
+@Route(path = "/app/main")
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     private MainMessager mainMessager;

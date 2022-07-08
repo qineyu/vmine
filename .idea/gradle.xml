@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/vcommon" />
+            <option value="$PROJECT_DIR$/vmain" />
           </set>
         </option>
       </GradleProjectSettings>

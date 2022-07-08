@@ -130,6 +130,7 @@ android {
 dependencies {
     //公共模块
     implementation project(path: ':vcommon')
+    implementation project(path: ':vmain')
     //Arouter路由
     annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
 

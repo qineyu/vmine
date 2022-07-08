@@ -4,4 +4,5 @@
     <color name="normal_text_color">#ffffff</color>
     <color name="title_bg_color">#F80101</color>
     <color name="main_bg_color">#ffffff</color>
+    <color name="white">#ffffff</color>
 </resources>
