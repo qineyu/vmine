@@ -2,4 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qinyue.vmain">
 
+    <application>
+        <activity android:name=".activity.LoginActivity"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait" />
+    </application>
 </manifest>

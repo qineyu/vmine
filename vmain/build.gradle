@@ -43,4 +43,5 @@ android {
 
 dependencies {
     implementation project(path: ':vcommon')
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
 }

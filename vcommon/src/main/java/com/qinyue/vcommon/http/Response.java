@@ -7,24 +7,24 @@ package com.qinyue.vcommon.http;
  * @描述 网络请求数据response
  */
 public class Response<T>{
-    private int code;
-    private String desc;
+    private int errorCode;
+    private String errorMsg;
     private T data;
 
-    public int getCode() {
-        return code;
+    public int getErrorCode() {
+        return errorCode;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public String getMsg() {
-        return desc;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public void setMsg(String msg) {
-        this.desc = msg;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
     public T getData() {
@@ -38,8 +38,8 @@ public class Response<T>{
     @Override
     public String toString() {
         return "Response{" +
-                "code=" + code +
-                ", msg='" + desc + '\'' +
+                "errorCode=" + errorCode +
+                ", errorMsg='" + errorMsg + '\'' +
                 ", data=" + data +
                 '}';
     }

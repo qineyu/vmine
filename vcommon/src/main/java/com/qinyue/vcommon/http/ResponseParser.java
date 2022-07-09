@@ -43,7 +43,7 @@ public class ResponseParser<T> extends TypeParser<T> {
              * 此时code正确，但是data字段为空，直接返回data的话，会报空指针错误，
              * 所以，判断泛型为String类型时，重新赋值，并确保赋值不为null
              */
-            t = (T) data.getMsg();
+            t = (T) data.getErrorMsg();
         }else if (t == null){
             try {
                 if (  ((ParameterizedTypeImpl)types[0]).getRawType()==List.class){
@@ -52,12 +52,12 @@ public class ResponseParser<T> extends TypeParser<T> {
                     t = (T)new PageList<T>();
                 }
             }catch (Exception e){
-                throw new ParseException(String.valueOf(data.getCode()), ReturnCode.getErrorMsg(data.getCode(),data.getMsg()), response);
+                throw new ParseException(String.valueOf(data.getErrorCode()), ReturnCode.getErrorMsg(data.getErrorCode(),data.getErrorMsg()), response);
             }
         }
 //        //还需要判断一次当前请求是不是直播间请求
-        if ((!ReturnCode.isSuccess(data.getCode()))&&response.request()!=null) {//code不等于200，说明数据不正确，抛出异常
-            throw new ParseException(String.valueOf(data.getCode()), ReturnCode.getErrorMsg(data.getCode(),data.getMsg()), response);
+        if ((!ReturnCode.isSuccess(data.getErrorCode()))&&response.request()!=null) {//code不等于200，说明数据不正确，抛出异常
+            throw new ParseException(String.valueOf(data.getErrorCode()), ReturnCode.getErrorMsg(data.getErrorCode(),data.getErrorMsg()), response);
         }
         return t;
     }

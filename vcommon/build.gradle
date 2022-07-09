@@ -88,4 +88,7 @@ dependencies {
     api rootProject.ext.dependencies["rxjava"]
     api rootProject.ext.dependencies["rxandroid"]
     api rootProject.ext.dependencies["rxlife"]
+    //图片加载框架
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["glide_compiler"]
 }
