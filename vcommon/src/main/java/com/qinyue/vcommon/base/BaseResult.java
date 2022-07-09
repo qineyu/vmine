@@ -1,8 +1,7 @@
 package com.qinyue.vcommon.base;
 
-import androidx.test.services.events.ErrorInfo;
 
-import com.qinyue.vcommon.listener.OnError;
+import com.qinyue.vcommon.http.ErrorInfo;
 
 /**
  * @ClassName: BaseResult

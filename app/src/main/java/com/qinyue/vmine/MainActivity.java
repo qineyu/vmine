@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             public void onChanged(MainEvent mainEvent) {
                 switch (mainEvent.eventId) {
                     case MainEvent.ERROR: {
-                        ToastUtils.toast(mainEvent.result.errorInfo.errorMessage);
+                        ToastUtils.toast(mainEvent.result.errorInfo.getErrorMsg());
                     }
                     break;
                     case MainEvent.CHAGESKINFINISH: {

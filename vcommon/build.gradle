@@ -15,7 +15,9 @@ android {
         //Arouter路由配置
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName(),
+                             rxhttp_rxjava: '3.1.5',
+                             rxhttp_package: 'rxhttp']
             }
         }
 
@@ -79,4 +81,11 @@ dependencies {
     api(rootProject.ext.dependencies["mvi"]){
         exclude group: 'androidx.appcompat'
     }
+    //网络请求相关
+    api rootProject.ext.dependencies["rxhttp"]
+    annotationProcessor rootProject.ext.dependencies["rxhttp_compiler"]
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxlife"]
 }

@@ -7,6 +7,7 @@ import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.qinyue.vcommon.BuildConfig;
+import com.qinyue.vcommon.http.HttpManager;
 import com.qinyue.vcommon.utils.XUtil;
 
 import skin.support.SkinCompatManager;
@@ -59,5 +60,7 @@ public class BaseApplication extends Application {
 //                .addInflater(new SkinCardViewInflater())                // CardView v7 控件换肤初始化[可选]
                 .setSkinWindowBackgroundEnable(true)                   // 关闭windowBackground换肤，默认打开[可选]
                 .loadSkin();
+        //初始化hppt请求
+        HttpManager.getInstance().initHttp(this,BuildConfig.IS_DEBUG);
     }
 }

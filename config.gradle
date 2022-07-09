@@ -48,6 +48,12 @@ ext {
 
             mvi                     : "4.2.0-beta",
 
+            rxhttp                  :"2.9.0",
+            okhttp                  :"4.10.0",
+            rxjava                  :"3.1.5",
+            rxandroid               :"3.0.0",
+            rxlife                  :"2.2.2",
+
     ]
 
     dependencies = [
@@ -86,6 +92,13 @@ ext {
             "skin_constraint_layout"        : "skin.support:skin-support-constraint-layout:${versions["skin"]}",
 
             "mvi"                           : "com.kunminx.arch:mvi-dispatch:${versions["mvi"]}",
+
+            rxhttp                          :"com.github.liujingxing.rxhttp:rxhttp:${versions["rxhttp"]}",
+            rxhttp_compiler                 :"com.github.liujingxing.rxhttp:rxhttp-compiler:${versions["rxhttp"]}",
+            okhttp                          :"com.squareup.okhttp3:okhttp:${versions["okhttp"]}",
+            rxjava                          :"io.reactivex.rxjava3:rxjava:${versions["rxjava"]}",
+            rxandroid                       :"io.reactivex.rxjava3:rxandroid:${versions["rxandroid"]}",
+            rxlife                          :"com.github.liujingxing.rxlife:rxlife-rxjava3:${versions["rxlife"]}",
 
     ]
 

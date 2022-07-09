@@ -3,9 +3,7 @@ package com.qinyue.vmine;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.qinyue.vcommon.base.BaseActivity;
 import com.qinyue.vcommon.utils.StatusBarUtils;
-import com.qinyue.vmain.R;
-import com.qinyue.vmain.databinding.ActivitySplashBinding;
-
+import com.qinyue.vmine.databinding.ActivitySplashBinding;
 /**
  * @ClassName: SplashActivity
  * @Description:

@@ -1,9 +1,8 @@
 package com.qinyue.vmine.messager;
 
-import androidx.test.services.events.ErrorInfo;
-
 import com.kunminx.architecture.domain.dispatch.MviDispatcher;
 import com.qinyue.vcommon.constants.SkinType;
+import com.qinyue.vcommon.http.ErrorInfo;
 import com.qinyue.vcommon.manager.MySkinManager;
 import com.qinyue.vmine.event.MainEvent;
 
@@ -26,7 +25,7 @@ public class MainMessager extends MviDispatcher<MainEvent> {
                }else {
                    MySkinManager.getInstance().chageNight();
                    MainEvent mainEvent = new MainEvent(MainEvent.ERROR);
-                   mainEvent.result.errorInfo= new ErrorInfo("夜间模式","1","2");
+                   mainEvent.result.errorInfo= new ErrorInfo(new Throwable("夜间模式"));
                    sendResult(mainEvent);
                }
            }break;
