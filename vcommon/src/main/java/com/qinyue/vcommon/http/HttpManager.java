@@ -65,26 +65,25 @@ public class HttpManager {
 
         //设置缓存目录为：Android/data/{app包名目录}/cache/RxHttpCache
         File cacheDir = new File(context.getExternalCacheDir(), "RxHttpCache");
-
         RxHttpPlugins.init(getHttpClient())      //自定义OkHttpClient对象
                 .setDebug(isDebug)                //是否开启调试模式，开启后，logcat过滤RxHttp，即可看到整个请求流程日志
-                .setCache(cacheDir, CACHE_SIZE, CacheMode.REQUEST_NETWORK_FAILED_READ_CACHE, CACHE_TIME)  //配置缓存目录，最大size及缓存模式
-                .setExcludeCacheKeys("currentTime","login","sendSms")   //设置一些key，不参与cacheKey的组拼
-                .setOnParamAssembly(new Function<Param<?>, Param<?>>() {
-                    @Override
-                    public Param<?> apply(Param<?> p) throws Exception {
-                        //主线程执行
-                        Method method = p.getMethod();
-                        if (method.isGet()) {     //可根据请求类型添加不同的参数
-                        } else if (method.isPost()) {
-                        }
-                        return p.addHeader("platform", "Android," + Build.VERSION.RELEASE)//添加公共参数
-                                .addHeader("id", AppUtils.getPackageName())
-                                .addHeader("version", AppUtils.getAppVersionName())
-                                .addHeader("buildtime", AppUtils.getBuildTime(context))
-                                .addHeader("channel", TextUtils.isEmpty(AppUtils.getChannel(context))?"appStore":AppUtils.getChannel(context)); //添加公共请求头
-                    }
-                });
+                .setCache(cacheDir, CACHE_SIZE, CacheMode.ONLY_NETWORK, CACHE_TIME)  //配置缓存目录，最大size及缓存模式
+                .setExcludeCacheKeys("currentTime","login","sendSms") ;  //设置一些key，不参与cacheKey的组拼
+//                .setOnParamAssembly(new Function<Param<?>, Param<?>>() {
+//                    @Override
+//                    public Param<?> apply(Param<?> p) throws Exception {
+//                        //主线程执行
+//                        Method method = p.getMethod();
+//                        if (method.isGet()) {     //可根据请求类型添加不同的参数
+//                        } else if (method.isPost()) {
+//                        }
+//                        return p.addHeader("platform", "Android," + Build.VERSION.RELEASE)//添加公共参数
+//                                .addHeader("id", AppUtils.getPackageName())
+//                                .addHeader("version", AppUtils.getAppVersionName())
+//                                .addHeader("buildtime", AppUtils.getBuildTime(context))
+//                                .addHeader("channel", TextUtils.isEmpty(AppUtils.getChannel(context))?"appStore":AppUtils.getChannel(context)); //添加公共请求头
+//                    }
+//                });
 //                .setResultDecoder(Function)       //设置数据解密/解码器，非必须
 //                .setConverter(IConverter)         //设置全局的转换器，非必须
 //                .setOnParamAssembly(Function);    //设置公共参数/请求头回调

@@ -10,7 +10,7 @@ public class ReturnCode {
     /**
      * 正常返回code
      */
-    public static final int SUCCESS = 200;
+    public static final int SUCCESS = 0;
     /**
      * 服务器错误
      */
@@ -26,11 +26,11 @@ public class ReturnCode {
     /**
      * 参数错误
      */
-    public static final int REQUEST_PARAMETER = 0;
+    public static final int REQUEST_PARAMETER = 1000;
     /**
      * 用户token失效
      */
-    public static final int TOKEN_ERROR = 5000;
+    public static final int TOKEN_ERROR = -1001;
 
     /**
      * 获取错误提示信息

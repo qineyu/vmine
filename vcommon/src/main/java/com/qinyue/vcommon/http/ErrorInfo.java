@@ -23,6 +23,11 @@ public class ErrorInfo {
     private String errorMsg; //错误文案，网络错误、请求失败错误、服务器返回的错误等文案
     private Throwable throwable; //异常信息
 
+    public ErrorInfo(int errorCode,String errorMsg){
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
     public ErrorInfo(Throwable throwable) {
         this.throwable = throwable;
         String errorMsg = null;

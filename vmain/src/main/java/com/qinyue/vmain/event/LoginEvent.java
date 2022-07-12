@@ -14,6 +14,7 @@ import com.qinyue.vcommon.base.BaseUserBean;
 public class LoginEvent extends BaseEvent<LoginEvent.Param, LoginEvent.Result> {
     public static final int LOGING = 1;
     public static final int LOGINGSUCCESS = 2;
+    public static final int REGISTER = 3;
 
     public LoginEvent(int eventId) {
         this.eventId = eventId;
@@ -21,6 +22,7 @@ public class LoginEvent extends BaseEvent<LoginEvent.Param, LoginEvent.Result> {
         this.result   = new Result();
     }
     public static class Param extends BaseParms {
+       public String name,pwd;
     }
 
     public static class Result extends BaseResult {
